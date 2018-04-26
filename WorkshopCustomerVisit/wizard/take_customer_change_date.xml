@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Start [Take Customer Change Date Visit] -->
+        <record id="take_customer_date_visit_form" model="ir.ui.view">
+            <field name="name">take_customer_date_visit.form</field>
+            <field name="model">tr.take.customer.change.date.wiz</field>
+            <field name="arch" type="xml">
+                <form string="Take Customer">
+                    <group>
+                        <field name="take_customer_date_visit" />
+                    </group>
+                    <footer>
+                        <button
+                                name="action_change_date_visit"
+                                string="Confirm"
+                                type="object"
+                                class="oe_highlight"
+                        />
+                        <button
+                                name="action_cancel_change_date_visit"
+                                string="Cancel"
+                                special="cancel"
+                                class="oe_highlight"
+                        />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window id="action_change_date_visit_wiz"
+                    name="Change Date Visit"
+                    res_model="tr.take.customer.change.date.wiz"
+                    view_mode="form"
+                    target="new"/>
+        <!-- End [Take Customer Change Date Visit]-->
+    </data>
+</odoo>

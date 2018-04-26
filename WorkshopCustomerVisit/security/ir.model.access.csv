@@ -1,0 +1,6 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+tr_project_reader,tr.project.reader,model_tr_project,group_reader,1,0,0,0
+tr_take_customer_reader,tr.take.customer.reader,model_tr_take_customer,group_reader,1,0,0,0
+tr_take_customer_change_date_wiz_reader,tr.take.customer.change.date.wiz.reader,model_tr_take_customer_change_date_wiz,group_reader,0,0,0,0
+tr_take_customer_wiz_reader,tr.take.customer.wiz.reader,model_tr_take_customer_wiz,group_reader,0,0,0,0
+tr_take_customer_mark_approve_wiz_reader,tr.take.customer.mark.approve.wiz.reader,model_tr_take_customer_mark_approve_wiz,group_reader,0,0,0,0

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Start [Take Customer Mark Approve] -->
+        <record id="take_customer_mark_approve_form" model="ir.ui.view">
+            <field name="name">take_customer_mark_approve.form</field>
+            <field name="model">tr.take.customer.mark.approve.wiz</field>
+            <field name="arch" type="xml">
+                <form string="Take Customer">
+                    <field name="take_customer_ids">
+                        <tree string="Take Customer">
+                            <field name="date_visit"/>
+                            <field name="name"/>
+                            <field name="project_id"/>
+                            <field name="balance"/>
+                            <field name="budget_use"/>
+                            <field name="state"/>
+                        </tree>
+                    </field>
+                    <footer>
+                        <button
+                                name="action_mark_approve"
+                                string="Confirm"
+                                type="object"
+                                class="oe_highlight"
+                        />
+                        <button
+                                name="action_cancel_mark_approve"
+                                string="Cancel"
+                                special="cancel"
+                                class="oe_highlight"
+                        />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window id="action_mark_approve_wiz"
+                    name="Mark Approve as Done"
+                    res_model="tr.take.customer.mark.approve.wiz"
+                    view_mode="form"
+                    target="new"/>
+
+        <menuitem id="action_mark_approve_menu"
+                  name="Mark Approve as Done"
+                  action="action_mark_approve_wiz"
+                  parent="project_menu"
+                  sequence="4" />
+        <!-- End [Take Customer Mark Approve]-->
+    </data>
+</odoo>

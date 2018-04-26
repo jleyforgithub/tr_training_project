@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <!-- Start [Project] -->
+        <record id="project_form" model="ir.ui.view">
+            <field name="name">project.form</field>
+            <field name="model">tr.project</field>
+            <field name="arch" type="xml">
+                <form string="Project Form">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="code"/>
+                            </group>
+                            <group>
+                                <field name="budget"/>
+                                <field name="balance"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Historical Take Customer">
+                                <field name="take_customer_ids">
+                                    <tree string="Historical Take Customer">
+                                        <field name="date_visit"/>
+                                        <field name="name"/>
+                                        <field name="project_id"/>
+                                        <field name="balance"/>
+                                        <field name="budget_use"/>
+                                        <field name="state"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="project_search" model="ir.ui.view">
+           <field name="name">project.search</field>
+           <field name="model">tr.project</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="budget"/>
+                    <field name="balance"/>
+                    <field name="take_customer_ids"/>
+                </search>
+           </field>
+        </record>-
+
+        <record id="project_tree" model="ir.ui.view">
+            <field name="name">project.tree</field>
+            <field name="model">tr.project</field>
+            <field name="arch" type="xml">
+                <tree string="Project Tree">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="budget"/>
+                    <field name="balance"/>
+                    <field name="take_customer_ids"/>
+                </tree>
+            </field>
+        </record>-->
+
+        <record id="project_action" model="ir.actions.act_window">
+            <field name="name">project.action</field>
+            <field name="res_model">tr.project</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+
+              </p>
+            </field>
+        </record>
+
+        <menuitem id="project_main_menu" name="Project"/>
+
+        <menuitem id="project_menu" name="Project"
+                  parent="project_main_menu"/>
+
+        <menuitem id="Project_List" name="Project List"
+                  action="project_action" parent="project_menu"
+                  sequence="1"
+        />
+        <!-- End [Project] -->
+
+        <!-- Start [Take Customer] -->
+        <record id="TakeCustomer_form" model="ir.ui.view">
+            <field name="name">TakeCustomer.form</field>
+            <field name="model">tr.take.customer</field>
+            <field name="arch" type="xml">
+                <form string="Take Customer Form">
+                    <header>
+                        <button name="action_request" states="draft" string="Request for Approve" type="object" class="oe_highlight"/>
+                        <button name="action_approve" states="wait" string="Approve" type="object" class="oe_highlight"/>
+                        <button name="action_reject" states="wait" string="Reject" type="object" class="oe_highlight"/>
+                        <button name="%(action_change_date_visit_wiz)d"
+                                string="Change Date Visit"
+                                type="action"
+                                class="oe_highlight"
+                                attrs="{
+                                    'invisible' : [
+                                        ('state', '!=', 'approve')
+                                    ]
+                                }"
+                        />
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="date_visit"/>
+                                <field name="name"/>
+                            </group>
+                            <group>
+                                <field name="project_id"/>
+                                <field name="balance"/>
+                                <field name="budget_use"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Sales Visit">
+                                <field name="sales_ids">
+                                    <tree string="Sales Visit">
+                                        <field name="name"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="TakeCustomer_search" model="ir.ui.view">
+           <field name="name">TakeCustomer.search</field>
+           <field name="model">tr.take.customer</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="date_visit"/>
+                    <field name="name"/>
+                    <field name="project_id"/>
+                    <field name="balance"/>
+                    <field name="budget_use"/>
+                    <field name="state"/>
+                </search>
+           </field>
+        </record>
+
+        <record id="TakeCustomer_tree" model="ir.ui.view">
+            <field name="name">TakeCustomer.tree</field>
+            <field name="model">tr.take.customer</field>
+            <field name="arch" type="xml">
+                <tree string="Take Customer Tree">
+                    <field name="date_visit"/>
+                    <field name="name"/>
+                    <field name="project_id"/>
+                    <field name="balance"/>
+                    <field name="budget_use"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="TakeCustomer_action" model="ir.actions.act_window">
+            <field name="name">TakeCustomer.action</field>
+            <field name="res_model">tr.take.customer</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+
+              </p>
+            </field>
+        </record>
+
+        <menuitem id="TakeCustomer_List" name="Take Customer"
+                  action="TakeCustomer_action" parent="project_menu"
+                  sequence="2"
+        />
+        <!-- End [Take Customer] -->
+    </data>
+</odoo>
